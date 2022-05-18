@@ -1,0 +1,134 @@
+jennie Project 요청 설계
+
+--------------------------------------------------------------------------------
+# 메인페이지 보기 요청
+요청내용    :   /jennie/main.blp
+파라미터    :   무
+컨트롤러    :   com.githrd.jennie.controller.MainForm
+뷰          :   /WEB-INF/views/jennie/main.jsp
+--------------------------------------------------------------------------------
+================================================================================
+############################## 회원관련 요청 ###################################
+================================================================================
+--------------------------------------------------------------------------------
+# 로그인 폼보기 요청
+요청내용    :   /jennie/member/login.blp
+파라미터    :   무
+컨트롤러    :   com.githrd.jennie.controller.member.LoginForm
+뷰          :   /WEB-INF/views/jennie/member/login.jsp
+기타        :   로그인 된 경우 ]
+                    redirect : /jennie/main.blp
+--------------------------------------------------------------------------------
+# 로그인 처리 요청
+요청내용    :   /jennie/member/loginProc.blp
+파라미터    :   id, pw
+컨트롤러    :   com.githrd.jennie.controller.member.LoginProc
+뷰          :   redirect ]
+                    성공 : /jennie/main.blp
+                    실패 : /jennie/member/login.blp
+--------------------------------------------------------------------------------
+# 로그아웃 처리 요청
+요청내용    :   /jennie/member/logout.blp
+파라미터    :   무
+컨트롤러    :   com.githrd.jennie.controller.member.Logout
+뷰          :   redirect ]
+                    성공 : /jennie/main.blp
+                    실패 : /jennie/main.blp
+--------------------------------------------------------------------------------
+# 회원가입 폼보기 요청
+요청내용    :   /jennie/member/join.blp
+파라미터    :   무
+컨트롤러    :   com.githrd.jennie.controller.member.JoinForm
+뷰          :   /WEB-INF/views/jennie/member/join.jsp
+기타        :   로그인 된 경우 ]
+                    redirect : /jennie/main.blp
+--------------------------------------------------------------------------------
+# 회원가입 처리 요청
+요청내용    :   /jennie/member/joinProc.blp
+파라미터    :   name, id, pw, mail, tel, ano, gen
+컨트롤러    :   com.githrd.jennie.controller.member.JoinProc
+뷰          :   무
+기타        :   로그인 된 경우 ]
+                    성공 : /jennie/main.blp
+                    실패 : /jennie/member/join.blp
+--------------------------------------------------------------------------------
+# 아이디체크 처리 요청
+요청내용    :   /jennie/member/idCheck.blp
+파라미터    :   id
+컨트롤러    :   com.githrd.jennie.controller.member.IdCheck
+뷰          :   json
+--------------------------------------------------------------------------------
+# 회원목록 폼보기 요청
+요청내용    :   /jennie/member/memberList.blp
+파라미터    :   무
+컨트롤러    :   com.githrd.jennie.controller.member.MemberList
+뷰          :   /WEB-INF/views/jennie/member/memberList.jsp
+--------------------------------------------------------------------------------
+# 회원정보 폼보기 요청
+요청내용    :   /jennie/member/memberInfo.blp
+파라미터    :   무
+컨트롤러    :   com.githrd.jennie.controller.member.MemberInfo
+뷰          :   /WEB-INF/views/jennie/member/memberInfo.jsp
+--------------------------------------------------------------------------------
+# 내정보보기 폼보기 요청
+요청내용    :   /jennie/member/myInfo.blp
+파라미터    :   무
+컨트롤러    :   com.githrd.jennie.controller.member.MyInfo
+뷰          :   /WEB-INF/views/jennie/member/memberInfo.jsp
+--------------------------------------------------------------------------------
+# 회원탈퇴 처리 요청
+요청내용    :   /jennie/member/delInfo.blp
+파라미터    :   mno, id(신원확인용)
+컨트롤러    :   com.githrd.jennie.controller.member.DelInfo
+뷰          :   redirect]
+                    성공 : /jennie/main.blp
+                    실패 : /jennie/member/myInfo.blp
+--------------------------------------------------------------------------------
+# 내정보 수정 폼보기 요청
+요청내용    :   /jennie/member/editInfo.blp
+파라미터    :   무
+컨트롤러    :   com.githrd.jennie.controller.member.EditInfo
+뷰          :   /WEB-INF/views/jennie/member/editInfo.jsp
+--------------------------------------------------------------------------------
+# 내정보 수정 처리 요청
+요청내용    :   /jennie/member/editProc.blp
+파라미터    :   mno, pw, mail, tel, ano
+컨트롤러    :   com.githrd.jennie.controller.member.EditProc
+뷰          :   redirect]
+                    성공 : /jennie/member/myInfo.blp
+                    실패 : /jennie/member/editInfo.blp
+--------------------------------------------------------------------------------
+================================================================================
+############################# 방명록관력 요청 ##################################
+================================================================================
+--------------------------------------------------------------------------------
+# 방명록 폼보기 요청
+요청내용    :   /jennie/guestBoard/gBoardList.blp
+파라미터    :   mno, pw, mail, tel, ano
+컨트롤러    :   com.githrd.jennie.controller.guestBoard.GuestBoard
+뷰          :   /WEB-INF/views/jennie/guestBoard/gBoardList.jsp
+--------------------------------------------------------------------------------
+# 방명록 글쓰기 폼보기 요청
+요청내용    :   /jennie/guestBoard/gBoardWrite.blp
+파라미터    :   nowPage
+컨트롤러    :   com.githrd.jennie.controller.guestBoard.GBoardWrite
+뷰          :   /WEB-INF/views/jennie/guestBoard/gBoardWrite.jsp
+--------------------------------------------------------------------------------
+# 방명록 글등록 처리 요청
+요청내용    :   /jennie/guestBoard/gBoardWriteProc.blp
+파라미터    :   body, nowPage
+컨트롤러    :   com.githrd.jennie.controller.guestBoard.GBoardWriteProc
+뷰          :   redirect]
+                       성공 : /jennie/guestBoard/gBoardList.blp
+                       실패 : /jennie/guestBoard/gBoardWrite.blp?nowPage=???
+--------------------------------------------------------------------------------
+================================================================================
+############################# 댓글게시판 요청 ##################################
+================================================================================
+--------------------------------------------------------------------------------
+# 댓글게시판 리스트 폼보기 요청
+요청내용    :   /jennie/reboard/reboardList.blp
+파라미터    :   [nowPage]
+컨트롤러    :   com.githrd.jennie.controller.reboard.ReboardList
+뷰          :   /WEB-INF/views/jennie/reboard/reboardList.jsp
+--------------------------------------------------------------------------------
