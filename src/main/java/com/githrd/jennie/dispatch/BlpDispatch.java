@@ -144,15 +144,18 @@ public class BlpDispatch extends HttpServlet {
         bool = (Boolean) req.getAttribute("isRedirect");
 
         if(bool == null) {
+            // null
             // 이 경우는 비동기 통신이 처리되어야 한다.
             PrintWriter pw = resp.getWriter();
             //req.setAttribute("isRedirect", null);
             //BlpInter 에서 비동기 통신을 하고싶을때 isRedirect 기본 설정 값
             pw.print(view);
         } else if(bool) {
+            // true
             // 리다이렉트 작업으로 처리해야되는 경우
             resp.sendRedirect(view);
         } else {
+            // false
             // 포워드 시켜야 하는 경우
             String prefix = "/WEB-INF/views";
             String suffix = ".jsp";

@@ -132,3 +132,34 @@ jennie Project 요청 설계
 컨트롤러    :   com.githrd.jennie.controller.reboard.ReboardList
 뷰          :   /WEB-INF/views/jennie/reboard/reboardList.jsp
 --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+# 댓글게시판 글쓰기 폼보기 요청
+요청내용    :   /jennie/reboard/reboardWrite.blp
+파라미터    :   nowPage
+컨트롤러    :   com.githrd.jennie.controller.reboard.ReboardWrite
+뷰          :   /WEB-INF/views/jennie/reboard/reboardWrite.jsp
+--------------------------------------------------------------------------------
+# 댓글게시판 글등록 처리 요청
+요청내용    :   /jennie/reboard/reboardWriteProc.blp
+파라미터    :   nowPage, mno, body
+컨트롤러    :   com.githrd.jennie.controller.reboard.ReboardWriteProc
+뷰          :   redirect]
+                      성공 : /jennie/reboard/reboardList.blp
+                      실패 : forward ] redirect.jsp
+                            /jennie/reboard/reboardWrite.blp
+--------------------------------------------------------------------------------
+# 댓글게시판 댓글쓰기 폼보기 요청
+요청내용    :   /jennie/reboard/reboardComment.blp
+파라미터    :   nowPage, mno, body
+컨트롤러    :   com.githrd.jennie.controller.reboard.ReboardComment
+뷰          :   /WEB-INF/views/jennie/reboard/reboardComment.jsp
+--------------------------------------------------------------------------------
+# 댓글게시판 댓글쓰기 처리 요청
+요청내용    :   /jennie/reboard/reboardCommentProc.blp
+파라미터    :   nowPage, mno, body
+컨트롤러    :   com.githrd.jennie.controller.reboard.ReboardCommentProc
+뷰          :   redirect]
+                         성공 : /jennie/reboard/reboardList.blp
+                         실패 : forward ] redirect.jsp
+                               /jennie/reboard/reboardComment.blp
+--------------------------------------------------------------------------------
